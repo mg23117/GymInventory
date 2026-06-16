@@ -1,6 +1,8 @@
 package com.example.gyminventory;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.gyminventory.databinding.ActivityMainBinding;
 import com.example.gyminventory.utils.ThemeManager;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         // Vinculamos ButtomNavigation con navcontroller
         NavigationUI.setupWithNavController(binding.bottomNav, navController);
 
+        // Configuración del listener personalizado para el NavigationView
+        // Para poder manejar items que no están en la grafica de navegacion (como el logout)
+        setupNavigationDrawerListener();
+
         // Manejo del botón de retroceso
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -72,6 +79,36 @@ public class MainActivity extends AppCompatActivity {
                         finish();
                     }
                 }
+            }
+        });
+    }
+
+    // Configuración del listener personalizado para el NavigationView
+    private void setupNavigationDrawerListener(){
+        binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem){
+                // Manejar aquí el item de logout (o cualquier otro item)
+                if (menuItem.getItemId() == R.id.nav_logout){
+                    // cerramos el drawer
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+
+                    // aqui va la demás lógica del logout (como no me toca, solo dejaré un toast)
+                    Toast.makeText(MainActivity.this, "Cerrar sesión (pendiente de implementar)", Toast.LENGTH_SHORT).show();
+
+                    return true;
+                }
+
+                // Para otros items delegamos en NavigationUi
+                // Para menejar la navegación y el resultado del item seleccionado
+                boolean handled = NavigationUI.onNavDestinationSelected(menuItem, navController);
+
+                if(handled){
+                    // Cerramos el drawer luego de navegar
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                }
+
+                return handled;
             }
         });
     }
