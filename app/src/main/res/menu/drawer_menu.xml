@@ -1,25 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Este archivo es para el drawer menu (aqui se manejan los items del drawer) -->
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+
+        <!-- Este item es para home -->
         <item
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_home"
             android:title="Inicio"
         android:checkable="true" />
+
+        <!-- Este item corresponde a las categorías -->
         <item
             android:id="@+id/nav_categories"
             android:icon="@drawable/ic_category"
             android:title="Categorías"
             android:checkable="true" />
+
+        <!-- Este item corresponde a los productos -->
         <item
             android:id="@+id/nav_products"
             android:icon="@drawable/ic_product"
             android:title="Productos"
             android:checkable="true" />
+
+        <!-- Este item corresponde a la configuración -->
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_settings"
             android:title="Configuración"
             android:checkable="true" />
     </group>
+
+    <!-- Este item es para el logout -->
+    <!-- Este item está fuera porque no es parte de la gráfica de navegación -->
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Cerrar sesión"
+        android:checkable="true" />
 </menu>
