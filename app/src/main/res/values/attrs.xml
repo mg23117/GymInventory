@@ -1,0 +1,5 @@
+<resources>
+    <attr name="drawerSelectedBg" format="color" />
+    <attr name="drawerSelectedTextColor" format="color" />
+    <attr name="drawerBackground" format="color" />
+</resources>

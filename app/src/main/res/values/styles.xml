@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ThemeOverlay.GymInventory.Switch" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorControlActivated">@color/switch_thumb_night</item>
+        <item name="colorSwitchThumbNormal">?attr/colorOnSurface</item>
+        <item name="android:colorForeground">?attr/colorControlActivated</item>
+    </style>
+</resources>

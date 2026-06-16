@@ -1,0 +1,20 @@
+<resources>
+    <color name="purple_200">#BB86FC</color>
+    <color name="purple_500">#1D124E</color>
+    <color name="purple_700">#3700B3</color>
+
+    <!-- Drawer modo noche -->
+    <color name="drawer_background">#452B75</color>
+    <color name="drawer_header_background">#1D124E</color>
+    <color name="drawer_selected_bg">#FFB74D</color>
+    <color name="drawer_selected_text">#1E1A2F</color>
+    <color name="drawer_text_normal">#E0E0E0</color>
+
+    <!-- Bottom navigation noche -->
+    <color name="bottom_nav_selected">#FFD54F</color>
+    <color name="bottom_nav_unselected">#B0B0B0</color>
+
+    <!-- Switch noche -->
+    <color name="switch_thumb_night">#E1BEE7</color>
+    <color name="switch_track_night">#6A1B9A</color>
+</resources>
