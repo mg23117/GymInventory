@@ -12,9 +12,12 @@ import com.example.gyminventory.data.entity.User;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.example.gyminventory.data.dao.CategoriaDao;
+import com.example.gyminventory.data.entity.Categoria;
+
 // Registramos todas las entidades de Room
 @Database(
-        entities = {User.class},
+        entities = {User.class, Categoria.class},
         version = 1,
         exportSchema = false
 )
@@ -22,6 +25,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
     // Room generará automáticamente la implementación
     public abstract UserDao userDao();
+    public abstract CategoriaDao categoriaDao();
 
     // Instancia única de la base de datos (Singleton)
     private static volatile AppDatabase INSTANCE;
