@@ -6,7 +6,9 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import com.example.gyminventory.data.dao.ProductoDao;
 import com.example.gyminventory.data.dao.UserDao;
+import com.example.gyminventory.data.entity.Producto;
 import com.example.gyminventory.data.entity.User;
 
 import java.util.concurrent.ExecutorService;
@@ -17,7 +19,7 @@ import com.example.gyminventory.data.entity.Categoria;
 
 // Registramos todas las entidades de Room
 @Database(
-        entities = {User.class, Categoria.class},
+        entities = {User.class, Categoria.class, Producto.class},
         version = 1,
         exportSchema = false
 )
@@ -26,6 +28,7 @@ public abstract class AppDatabase extends RoomDatabase {
     // Room generará automáticamente la implementación
     public abstract UserDao userDao();
     public abstract CategoriaDao categoriaDao();
+    public abstract ProductoDao productoDao();
 
     // Instancia única de la base de datos (Singleton)
     private static volatile AppDatabase INSTANCE;
