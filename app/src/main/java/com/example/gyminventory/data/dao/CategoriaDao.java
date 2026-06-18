@@ -29,4 +29,8 @@ public interface CategoriaDao {
     // Elimina una categoría
     @Delete
     void delete(Categoria categoria);
+
+    // Obtiene la cantidad total de categorías registradas
+    @Query("SELECT COUNT(*) FROM categoria")
+    int getTotalCategorias();
 }

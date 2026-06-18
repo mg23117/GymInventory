@@ -17,10 +17,10 @@ import java.util.concurrent.Executors;
 import com.example.gyminventory.data.dao.CategoriaDao;
 import com.example.gyminventory.data.entity.Categoria;
 
-// Registramos todas las entidades de Room
+// Base de datos principal de Room que centraliza el acceso a las entidades y DAOs.
 @Database(
         entities = {User.class, Categoria.class, Producto.class},
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 public abstract class AppDatabase extends RoomDatabase {

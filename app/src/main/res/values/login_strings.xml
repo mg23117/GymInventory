@@ -1,0 +1,11 @@
+<resources>
+    <!-- LOGIN STRINGS: -->
+    <!-- Título -->
+    <string name="login_title">Iniciar Sesión</string>
+
+    <!-- Botones -->
+    <string name="btn_login">Iniciar Sesión</string>
+
+    <!-- Texto inferior -->
+    <string name="no_account">¿No tienes una cuenta?</string>
+</resources>

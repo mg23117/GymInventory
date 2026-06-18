@@ -6,7 +6,7 @@ import androidx.room.Query;
 
 import com.example.gyminventory.data.entity.User;
 
-// Interfaz que contiene consultas SQL para Room
+// Encargado de las consultas y operaciones SQL relacionadas con usuarios
 @Dao
 public interface UserDao {
 

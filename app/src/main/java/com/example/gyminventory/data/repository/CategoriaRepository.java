@@ -7,6 +7,8 @@ import com.example.gyminventory.data.database.AppDatabase;
 import com.example.gyminventory.data.entity.Categoria;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 public class CategoriaRepository {
 
@@ -19,7 +21,7 @@ public class CategoriaRepository {
     }
 
     // Registrar categoría
-    public void insert(Categoria categoria, Runnable onFinish) {
+    public void insert(Categoria categoria, Runnable onFinish){
         AppDatabase.databaseWriteExecutor.execute(() -> {
             categoriaDao.insert(categoria);
 
@@ -54,5 +56,18 @@ public class CategoriaRepository {
                 onFinish.run();
             }
         });
+    }
+
+    // Obtiene el número total de categorías
+    public int getTotalCategorias() {
+        // Ejecuta la consulta en un hilo secundario para obtener la cantidad total de categorías
+        Future<Integer> future = AppDatabase.databaseWriteExecutor.submit(() -> categoriaDao.getTotalCategorias());
+
+        try {
+            return future.get(); // Espera el resultado de la consulta (y bloquea hasta recibir datos)
+        } catch (ExecutionException | InterruptedException e) { // Si ocurre un error en la consulta o el hilo es interrumpido
+            e.printStackTrace();
+            return 0;
+        }
     }
 }
