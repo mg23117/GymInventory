@@ -8,8 +8,10 @@ import com.example.gyminventory.data.entity.Categoria;
 import com.example.gyminventory.data.entity.Producto;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class ProductoRepository {
 
@@ -61,5 +63,18 @@ public class ProductoRepository {
                 callBack.onDataReady(categorias);
             }
         });
+    }
+
+    // Obtiene la cantidad total de productos activos
+    public int getTotalProductos() {
+        // Ejecuta la consulta en un hilo secundario para obtener la cantidad total de productos
+        Future<Integer> future = executorService.submit(() -> productoDao.getTotalProductos());
+
+        try {
+            return future.get(); // Espera el resultado de la consulta (y bloquea hasta recibir datos)
+        } catch (ExecutionException | InterruptedException e) { // Si ocurre un error en la consulta o el hilo es interrumpido
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

@@ -29,4 +29,8 @@ public interface ProductoDao {
     //Eliminación lógica. Cambia el estado de activo a 0 = false.
     @Query("UPDATE productos SET activo = 0 WHERE id = :id")
     void eliminacionLogica(int id);
+
+    // Obtiene la cantidad total de productos activos
+    @Query("SELECT COUNT(*) FROM productos WHERE activo = 1")
+    int getTotalProductos();
 }

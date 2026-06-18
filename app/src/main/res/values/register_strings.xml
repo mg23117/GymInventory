@@ -1,0 +1,22 @@
+<resources>
+
+    <!-- REGISTER STRINGS: -->
+    <!-- Títulos -->
+    <string name="title_register">Registrarse</string>
+    <string name="title_login">Iniciar sesión</string>
+
+    <!-- Hints -->
+    <string name="hint_name">Nombre</string>
+    <string name="hint_email">Correo electrónico</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar contraseña</string>
+
+    <!-- Botones -->
+    <string name="btn_register">Registrarse</string>
+
+    <!-- Texto inferior -->
+    <string name="text_have_account">¿Ya tienes cuenta?</string>
+    <string name="text_login">Iniciar sesión</string>
+
+
+</resources>

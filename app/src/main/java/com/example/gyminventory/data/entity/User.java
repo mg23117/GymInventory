@@ -5,7 +5,7 @@ import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
-// Define la tabla
+// Entidad de Room que representa la tabla de usuarios en la base de datos
 @Entity(
         tableName = "usuarios",
         indices = {@Index(value = "correo", unique = true)}
@@ -40,7 +40,6 @@ public class User {
         this.id = id;
     }
 
-
     public String getNombre() {
         return nombre;
     }
@@ -49,7 +48,6 @@ public class User {
         this.nombre = nombre;
     }
 
-
     public String getCorreo() {
         return correo;
     }
@@ -57,7 +55,6 @@ public class User {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
 
     public String getPassword() {
         return password;
