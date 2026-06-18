@@ -19,9 +19,13 @@ public class CategoriaRepository {
     }
 
     // Registrar categoría
-    public void insert(Categoria categoria) {
+    public void insert(Categoria categoria, Runnable onFinish) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             categoriaDao.insert(categoria);
+
+            if (onFinish != null) {
+                onFinish.run();
+            }
         });
     }
 
@@ -31,16 +35,24 @@ public class CategoriaRepository {
     }
 
     // Actualizar categoría
-    public void update(Categoria categoria) {
+    public void update(Categoria categoria, Runnable onFinish) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             categoriaDao.update(categoria);
+
+            if (onFinish != null) {
+                onFinish.run();
+            }
         });
     }
 
     // Eliminar categoría
-    public void delete(Categoria categoria) {
+    public void delete(Categoria categoria, Runnable onFinish) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             categoriaDao.delete(categoria);
+
+            if (onFinish != null) {
+                onFinish.run();
+            }
         });
     }
 }

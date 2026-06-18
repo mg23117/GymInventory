@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <!-- Icono de la categoría -->
+        <TextView
+            android:id="@+id/txtIconoCategoria"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="🏋️"
+            android:textSize="26sp" />
+
+        <!-- Nombre de la categoría -->
+        <TextView
+            android:id="@+id/txtNombreCategoria"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="Máquinas"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <!-- Menú de tres puntos -->
+        <ImageButton
+            android:id="@+id/btnMenuCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="Opciones de categoría"
+            android:src="@android:drawable/ic_menu_more" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
