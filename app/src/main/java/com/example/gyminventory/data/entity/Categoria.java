@@ -23,6 +23,18 @@ public class Categoria {
         this.nombre = nombre;
         this.icono = icono;
     }
+    // Indica si la categoría está activa.
+     // Se utiliza para realizar eliminación lógica.
+    private boolean activo = true;
+
+    // Devuelve el estado actual de la categoría
+    public boolean isActivo() {
+        return activo;
+    }
+    // Permite cambiar el estado de la categoría
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
     // Métodos getter y setter para acceder y modificar los datos
 

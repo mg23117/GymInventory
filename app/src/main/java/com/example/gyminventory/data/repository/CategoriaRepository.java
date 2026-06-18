@@ -69,5 +69,21 @@ public class CategoriaRepository {
             e.printStackTrace();
             return 0;
         }
+
     }
+
+        // Realiza la eliminación lógica de una categoría.
+
+        public void eliminacionLogica(int id, Runnable onFinish) {
+            AppDatabase.databaseWriteExecutor.execute(() -> {
+
+                // Ejecuta la consulta definida en el DAO
+                categoriaDao.eliminacionLogica(id);
+
+
+                if (onFinish != null) {
+                    onFinish.run();
+                }
+            });
+        }
 }

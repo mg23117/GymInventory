@@ -18,8 +18,9 @@ public interface CategoriaDao {
     @Insert
     void insert(Categoria categoria);
 
-    // Obtiene todas las categorías
-    @Query("SELECT * FROM Categoria")
+    // Obtiene solo las categorías activas.
+    // Las categorías con activo = 0 no se muestran en la lista.
+    @Query("SELECT * FROM Categoria WHERE activo = 1")
     List<Categoria> getAllCategoria();
 
     // Actualiza una categoría existente
@@ -33,4 +34,9 @@ public interface CategoriaDao {
     // Obtiene la cantidad total de categorías registradas
     @Query("SELECT COUNT(*) FROM categoria")
     int getTotalCategorias();
+
+    // Realiza eliminación lógica.
+     // No borra el registro, solo cambia activo a 0.
+    @Query("UPDATE Categoria SET activo = 0 WHERE id = :id")
+    void eliminacionLogica(int id);
 }
