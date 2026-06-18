@@ -77,4 +77,9 @@ public class ProductoRepository {
             return 0;
         }
     }
+
+    // Retorna cuántos productos activos usan una categoría
+    public int contarProductosPorCategoria(int categoriaId) {
+        return productoDao.contarProductosPorCategoria(categoriaId);
+    }
 }

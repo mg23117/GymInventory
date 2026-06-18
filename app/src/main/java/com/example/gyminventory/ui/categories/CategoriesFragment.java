@@ -10,6 +10,8 @@ import android.widget.EditText;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.widget.Toast;
+import com.example.gyminventory.data.repository.ProductoRepository;
 
 import com.example.gyminventory.R;
 import com.example.gyminventory.data.entity.Categoria;
@@ -27,6 +29,7 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
 
     private CategoriaAdapter adapter;
     private CategoriaRepository repository;
+    private ProductoRepository productoRepository;
 
 
     private final List<Categoria> listaCategorias = new ArrayList<>();
@@ -41,7 +44,7 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
         fabAgregarCategoria = view.findViewById(R.id.fabAgregarCategoria);
 
         repository = new CategoriaRepository(requireContext());
-
+        productoRepository = new ProductoRepository(requireContext());
 
         adapter = new CategoriaAdapter(this);
 
@@ -142,22 +145,40 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
     }
 
 
-    // Realiza la eliminación lógica de la categoría.
+    // Valida que la categoría no tenga productos asociados antes de aplicar la eliminación lógica.
     @Override
     public void onEliminarClick(Categoria categoria) {
 
-        new AlertDialog.Builder(requireContext())
-                .setTitle("Eliminar")
-                .setMessage("¿Desea eliminar esta categoría?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+        new Thread(() -> {
 
-                    repository.eliminacionLogica(
-                            categoria.getId(),
-                            () -> requireActivity().runOnUiThread(this::cargarCategorias)
-                    );
+            int cantidadProductos = productoRepository.contarProductosPorCategoria(categoria.getId());
 
-                })
-                .setNegativeButton("No", null)
-                .show();
+            requireActivity().runOnUiThread(() -> {
+
+                if (cantidadProductos > 0) {
+                    Toast.makeText(
+                            requireContext(),
+                            "No se puede eliminar esta categoría porque tiene productos asociados.",
+                            Toast.LENGTH_LONG
+                    ).show();
+                    return;
+                }
+
+                new AlertDialog.Builder(requireContext())
+                        .setTitle("Eliminar")
+                        .setMessage("¿Desea eliminar esta categoría?")
+                        .setPositiveButton("Sí", (dialog, which) -> {
+
+                            // Elimina lógicamente solo si no tiene productos asociados
+                            repository.eliminacionLogica(
+                                    categoria.getId(),
+                                    () -> requireActivity().runOnUiThread(this::cargarCategorias)
+                            );
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+            });
+
+        }).start();
     }
 }

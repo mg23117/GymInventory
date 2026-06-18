@@ -33,4 +33,8 @@ public interface ProductoDao {
     // Obtiene la cantidad total de productos activos
     @Query("SELECT COUNT(*) FROM productos WHERE activo = 1")
     int getTotalProductos();
+
+    // Cuenta productos activos asociados a una categoría
+    @Query("SELECT COUNT(*) FROM productos WHERE categoriaId = :categoriaId AND activo = 1")
+    int contarProductosPorCategoria(int categoriaId);
 }
