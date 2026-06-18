@@ -16,6 +16,7 @@ import com.example.gyminventory.data.entity.Categoria;
 import com.example.gyminventory.data.repository.CategoriaRepository;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
 
     private CategoriaAdapter adapter;
     private CategoriaRepository repository;
+
 
     private final List<Categoria> listaCategorias = new ArrayList<>();
 
@@ -39,6 +41,7 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
         fabAgregarCategoria = view.findViewById(R.id.fabAgregarCategoria);
 
         repository = new CategoriaRepository(requireContext());
+
 
         adapter = new CategoriaAdapter(this);
 
@@ -138,6 +141,8 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
         mostrarDialogEditar(categoria);
     }
 
+
+    // Realiza la eliminación lógica de la categoría.
     @Override
     public void onEliminarClick(Categoria categoria) {
 
@@ -146,10 +151,11 @@ public class CategoriesFragment extends Fragment implements CategoriaAdapter.OnC
                 .setMessage("¿Desea eliminar esta categoría?")
                 .setPositiveButton("Sí", (dialog, which) -> {
 
-                    repository.delete(
-                            categoria,
+                    repository.eliminacionLogica(
+                            categoria.getId(),
                             () -> requireActivity().runOnUiThread(this::cargarCategorias)
                     );
+
                 })
                 .setNegativeButton("No", null)
                 .show();
