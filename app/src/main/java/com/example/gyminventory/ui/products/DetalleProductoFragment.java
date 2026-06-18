@@ -45,8 +45,13 @@ public class DetalleProductoFragment extends Fragment {
             txtStock.setText("Unidades disponibles: " + getArguments().getInt("stock", 0));
 
             String stringUri = getArguments().getString("imagen", "");
-            if (!stringUri.isEmpty()) {
+            if (stringUri != null && !stringUri.isEmpty()) {
                 imgProducto.setImageURI(Uri.parse(stringUri));
+                imgProducto.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            } else {
+                imgProducto.setImageResource(R.drawable.foto);
+                imgProducto.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+                imgProducto.setPadding(64,64,64,64);
             }
         }
 
