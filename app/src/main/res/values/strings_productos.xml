@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Fragment principal-->
+    <string name="buscar_prod">Buscar producto</string>
+
+    <!--Formulario-->
+    <string name="titulo_nuevo_prod">Registrar producto</string>
+    <string name="desImg_prod">Imagen del producto</string>
+    <string name="categoria_prod">Selecciona la categoria:</string>
+    <string name="addImg_prod">Toca para seleccionar foto</string>
+    <string name="nombre_prod">Nombre del producto</string>
+    <string name="price_prod">Precio ($)</string>
+    <string name="stock">Cantidad en Stock</string>
+
+    <!--ITEMS-->
+    <string name="precio_prod">$0.00</string>
+    <string name="stock_prod">Stock: 0 uds</string>
+
+    <!--Detalles del product-->
+    <string name="det_back">Regresar</string>
+    <string name="det_img">Imagen ampliada</string>
+    <string name="det_nombre">Nombre del producto</string>
+    <string name="det_categoria">Categoría: Ejemplo</string>
+    <string name="det_precio">$0.00</string>
+    <string name="det_stock">Unidades disponibles: 0</string>
+</resources>

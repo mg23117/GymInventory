@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnRegresarDetalle"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/det_back"
+        android:textColor="?attr/colorSecondary"
+        app:icon="@drawable/outline_arrow_left_alt_24"
+        app:iconTint="?attr/colorSecondary"
+        android:layout_marginBottom="12dp"/>
+
+    <ImageView
+        android:id="@+id/imgDetalleProducto"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/det_img" />
+
+    <TextView
+        android:id="@+id/txtDetalleNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/det_nombre"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtDetalleCategoria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/det_categoria"
+        android:textSize="14sp"
+        android:textStyle="bold|normal"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/txtDetallePrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/det_precio"
+        android:textSize="20sp"
+        android:textColor="?attr/colorSecondary"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtDetalleStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/det_stock"
+        android:textSize="16sp"
+        android:textColor="?attr/colorOnSurface" />
+</LinearLayout>
