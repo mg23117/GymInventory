@@ -32,7 +32,7 @@ public interface CategoriaDao {
     void delete(Categoria categoria);
 
     // Obtiene la cantidad total de categorías registradas
-    @Query("SELECT COUNT(*) FROM categoria")
+    @Query("SELECT COUNT(*) FROM categoria WHERE activo = 1")
     int getTotalCategorias();
 
     // Realiza eliminación lógica.
